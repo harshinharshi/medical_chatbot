@@ -4,20 +4,20 @@ A FastAPI-based medical assistant for Community Health Center Harichandanpur, Ke
 
 ## Features ✨
 
-- **AI-Powered Responses**: Uses LangChain and Groq for intelligent conversations
-- **Hospital Policy Search**: Vector-based search through hospital policies PDF
-- **Multi-conversation Support**: Maintains conversation history with thread IDs
-- **RESTful API**: Clean and well-documented FastAPI endpoints
-- **Real-time Information**: Current date/time and hospital information
+  - **AI-Powered Responses**: Uses LangChain and Groq for intelligent conversations
+  - **Hospital Policy Search**: Vector-based search through hospital policies PDF
+  - **Multi-conversation Support**: Maintains conversation history with thread IDs
+  - **RESTful API**: Clean and well-documented FastAPI endpoints
+  - **Real-time Information**: Current date/time and hospital information
 
 ## Setup Instructions 🚀
 
-### 1. Prerequisites
+### 1\. Prerequisites
 
-- Python 3.8 or higher
-- Groq API key (sign up at [Groq Console](https://console.groq.com))
+  - Python 3.8 or higher
+  - Groq API key (sign up at [Groq Console](https://console.groq.com))
 
-### 2. Installation
+### 2\. Installation
 
 ```bash
 # Clone or download the project
@@ -27,7 +27,7 @@ cd your-project-directory
 pip install -r requirements.txt
 ```
 
-### 3. Environment Setup
+### 3\. Environment Setup
 
 Create a `.env` file in the project root:
 
@@ -36,15 +36,16 @@ Create a `.env` file in the project root:
 GROQ_API_KEY=your_groq_api_key_here
 ```
 
-### 4. Prepare Hospital Policies (Optional)
+### 4\. Prepare Hospital Policies (Optional)
 
 If you have a hospital policies PDF:
-- Create a folder: `utils/data/`
-- Place your PDF file as: `utils/data/hospital_policies.pdf`
+
+  - Create a folder: `utils/data/`
+  - Place your PDF file as: `utils/data/hospital_policies.pdf`
 
 If no PDF is available, the system will use fallback content.
 
-### 5. Run the Application
+### 5\. Run the Application
 
 ```bash
 # Start the FastAPI server
@@ -56,27 +57,46 @@ uvicorn main:app --reload
 
 The API will be available at: http://localhost:8000
 
+### 6\. Run LangGraph Studio (Optional)
+
+You can visualize and interact with the LangGraph agent using LangGraph Studio.
+
+First, ensure you have provided all required API keys in the `.env` file.
+
+Then, from the project root directory, run the following command:
+
+```bash
+langgraph dev
+```
+
 ## API Endpoints 📡
 
-### 1. Root Information
+### 1\. Root Information
+
 ```bash
 GET /
 ```
+
 Returns basic API information and available endpoints.
 
-### 2. Health Check
+### 2\. Health Check
+
 ```bash
 GET /health
 ```
+
 Check if the service is running properly.
 
-### 3. Hospital Information
+### 3\. Hospital Information
+
 ```bash
 GET /info
 ```
+
 Get details about the hospital and available services.
 
-### 4. Chat with Assistant
+### 4\. Chat with Assistant
+
 ```bash
 POST /chat
 Content-Type: application/json
@@ -87,13 +107,15 @@ Content-Type: application/json
 }
 ```
 
-### 5. Interactive Documentation
-- **Swagger UI**: http://localhost:8000/docs
-- **ReDoc**: http://localhost:8000/redoc
+### 5\. Interactive Documentation
+
+  - **Swagger UI**: http://localhost:8000/docs
+  - **ReDoc**: http://localhost:8000/redoc
 
 ## Usage Examples 💡
 
 ### Python Requests
+
 ```python
 import requests
 
@@ -111,6 +133,7 @@ print(result["response"])
 ```
 
 ### Curl
+
 ```bash
 # Health check
 curl -X GET "http://localhost:8000/health"
@@ -122,6 +145,7 @@ curl -X POST "http://localhost:8000/chat" \
 ```
 
 ### JavaScript/Fetch
+
 ```javascript
 fetch('http://localhost:8000/chat', {
     method: 'POST',
@@ -161,49 +185,55 @@ project/
 
 The assistant has access to these tools:
 
-1. **search_hospital_policies**: Search through hospital policies and procedures
-2. **get_current_datetime**: Get current date and time
-3. **get_owner_info**: Information about Dr. Harshin and hospital leadership
+1.  **search\_hospital\_policies**: Search through hospital policies and procedures
+2.  **get\_current\_datetime**: Get current date and time
+3.  **get\_owner\_info**: Information about Dr. Harshin and hospital leadership
 
 ## Example Questions 🤔
 
 Try asking the assistant:
 
-- "What are the visiting hours?"
-- "Who is the hospital owner?"
-- "What are the visitor policies?"
-- "What is the current date?"
-- "Tell me about patient care policies"
-- "How many visitors are allowed at a time?"
+  - "What are the visiting hours?"
+  - "Who is the hospital owner?"
+  - "What are the visitor policies?"
+  - "What is the current date?"
+  - "Tell me about patient care policies"
+  - "How many visitors are allowed at a time?"
 
 ## Troubleshooting 🔧
 
 ### Common Issues:
 
-1. **"Agent not initialized" error**
-   - Check if your Groq API key is valid
-   - Ensure all dependencies are installed
+1.  **"Agent not initialized" error**
 
-2. **PDF loading fails**
-   - Check if the PDF file exists at `utils/data/hospital_policies.pdf`
-   - The system will use fallback content if PDF is missing
+      - Check if your Groq API key is valid
+      - Ensure all dependencies are installed
 
-3. **Connection errors**
-   - Verify the server is running on the correct port
-   - Check firewall settings if accessing remotely
+2.  **PDF loading fails**
+
+      - Check if the PDF file exists at `utils/data/hospital_policies.pdf`
+      - The system will use fallback content if PDF is missing
+
+3.  **Connection errors**
+
+      - Verify the server is running on the correct port
+      - Check firewall settings if accessing remotely
 
 ### Logs
+
 The application provides helpful logs during startup and operation. Check the console for any error messages.
 
 ## Production Deployment 🚀
 
 For production deployment:
 
-1. Set `reload=False` in the uvicorn configuration
-2. Use a production WSGI server like Gunicorn
-3. Set up proper logging
-4. Configure environment variables securely
-5. Use HTTPS in production
+1.  Set `reload=False` in the uvicorn configuration
+2.  Use a production WSGI server like Gunicorn
+3.  Set up proper logging
+4.  Configure environment variables securely
+5.  Use HTTPS in production
+
+<!-- end list -->
 
 ```bash
 # Example production command
@@ -213,13 +243,12 @@ gunicorn main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
 ## Contributing 🤝
 
 Feel free to contribute to this project by:
-- Adding new features
-- Improving error handling
-- Enhancing documentation
-- Adding more hospital-specific tools
 
----
+  - Adding new features
+  - Improving error handling
+  - Enhancing documentation
+  - Adding more hospital-specific tools
 
-**Community Health Center Harichandanpur**  
-*Keonjhar, Odisha, India*  
-*Under the guidance of Dr. Harshin*
+-----
+
+**Community Health Center Harichandanpur** *Keonjhar, Odisha, India* *Under the guidance of Dr. Harshin*
