@@ -36,30 +36,30 @@ def run_agent(agent_executor, user_input: str, thread_id: str = "default"):
     except Exception as e:
         return f"I apologize, but I encountered an error: {str(e)}. Please try asking your question again."
 
-if __name__ == "__main__":
-    print("Medical Assistant for Community Health Center Harichandanpur")
-    print("Ask me about hospital policies, procedures, visiting hours, or any medical questions!")
-    print("Type 'quit' to exit\n")
+# if __name__ == "__main__":
+#     print("Medical Assistant for Community Health Center Harichandanpur")
+#     print("Ask me about hospital policies, procedures, visiting hours, or any medical questions!")
+#     print("Type 'quit' to exit\n")
    
-    # Create the agent
-    agent_executor = create_agent()
-    thread_id = "main_conversation"
+#     # Create the agent
+#     agent_executor = create_agent()
+#     thread_id = "main_conversation"
    
-    while True:
-        try:
-            user_input = input("You: ")
-            if user_input.lower() in ['quit', 'exit', 'bye']:
-                print("Thank you for using our medical assistant. Take care!")
-                break
+#     while True:
+#         try:
+#             user_input = input("You: ")
+#             if user_input.lower() in ['quit', 'exit', 'bye']:
+#                 print("Thank you for using our medical assistant. Take care!")
+#                 break
            
-            if user_input.strip():
-                response = run_agent(agent_executor, user_input, thread_id)
-                print(f"\nAssistant: {response}\n")
-            else:
-                print("Please enter a question or type 'quit' to exit.\n")
+#             if user_input.strip():
+#                 response = run_agent(agent_executor, user_input, thread_id)
+#                 print(f"\nAssistant: {response}\n")
+#             else:
+#                 print("Please enter a question or type 'quit' to exit.\n")
                
-        except KeyboardInterrupt:
-            print("\nGoodbye!")
-            break
-        except Exception as e:
-            print(f"An error occurred: {e}\n")
+#         except KeyboardInterrupt:
+#             print("\nGoodbye!")
+#             break
+#         except Exception as e:
+#             print(f"An error occurred: {e}\n")

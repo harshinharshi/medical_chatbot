@@ -1,4 +1,5 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from typing import Optional
 import uvicorn
@@ -163,22 +164,28 @@ async def get_hospital_info():
         ]
     }
 
-# Error handlers
+# Fixed Error handlers - returning JSONResponse objects instead of dicts
 @app.exception_handler(404)
-async def not_found_handler(request, exc):
+async def not_found_handler(request: Request, exc):
     """Custom 404 error handler"""
-    return {
-        "error": "Endpoint not found",
-        "message": "The requested endpoint does not exist. Visit /docs for available endpoints."
-    }
+    return JSONResponse(
+        status_code=404,
+        content={
+            "error": "Endpoint not found",
+            "message": "The requested endpoint does not exist. Visit /docs for available endpoints."
+        }
+    )
 
 @app.exception_handler(500)
-async def internal_error_handler(request, exc):
+async def internal_error_handler(request: Request, exc):
     """Custom 500 error handler"""
-    return {
-        "error": "Internal server error",
-        "message": "Something went wrong. Please try again later."
-    }
+    return JSONResponse(
+        status_code=500,
+        content={
+            "error": "Internal server error",
+            "message": "Something went wrong. Please try again later."
+        }
+    )
 
 # Development server runner
 if __name__ == "__main__":
@@ -191,8 +198,8 @@ if __name__ == "__main__":
     # Run the server
     uvicorn.run(
         "main:app",  # Change this to your filename if different
-        host="127.0.0.1",  # Allow external connections
-        port=8000,       # Default port
+        host="0.0.0.0",  # Allow external connections (changed from 127.0.0.1)
+        port=8000,       # Your server port
         reload=True,     # Auto-reload on code changes (development only)
         log_level="info"
     )
