@@ -148,7 +148,7 @@ async def get_hospital_info():
     return {
         "hospital_name": "Community Health Center Harichandanpur",
         "location": "Keonjhar, Odisha, India",
-        "owner": "Dr. Harshin",
+        "owner": "Dr. Hari",
         "services": [
             "Hospital policies and procedures information",
             "Visiting hours and visitor guidelines",
@@ -191,7 +191,7 @@ if __name__ == "__main__":
     # Run the server
     uvicorn.run(
         "main:app",  # Change this to your filename if different
-        host="0.0.0.0",  # Allow external connections
+        host="127.0.0.1",  # Allow external connections
         port=8000,       # Default port
         reload=True,     # Auto-reload on code changes (development only)
         log_level="info"

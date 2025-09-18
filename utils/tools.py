@@ -110,14 +110,14 @@ def get_current_datetime() -> str:
 
 @tool
 def get_owner_info() -> str:
-    """Get information about the hospital owner Dr. Harshin and hospital leadership details."""
+    """Get information about the hospital owner Dr. Hari and hospital leadership details."""
     return """Hospital Owner Information:
-    Name: Dr. Harshin
+    Name: Dr. Hari
     Position: Owner and Medical Director
     Hospital: Community Health Center Harichandanpur
     Location: Keonjhar, Odisha, India
     
-    Dr. Harshin is the owner and medical director of Community Health Center Harichandanpur, 
+    Dr. Hari is the owner and medical director of Community Health Center Harichandanpur, 
     overseeing all medical operations, policy implementation, and ensuring quality healthcare 
     delivery at the facility. Under his leadership, the hospital maintains comprehensive 
     policies for patient care, safety, and quality management."""
