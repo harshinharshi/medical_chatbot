@@ -1,0 +1,6 @@
+{
+    "dependencies": ["langchain", "langchain-groq", "langgraph"],
+    "graphs": {
+        "agent": "./my_agent/agent.py:agent_executor"
+    }
+}
