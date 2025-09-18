@@ -51,7 +51,7 @@ If no PDF is available, the system will use fallback content.
 python main.py
 
 # Or use uvicorn directly
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
+uvicorn main:app --reload
 ```
 
 The API will be available at: http://localhost:8000
