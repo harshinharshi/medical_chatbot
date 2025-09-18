@@ -3,6 +3,8 @@ langchain
 langchain-groq
 langchain-community
 langgraph
+langgraph-cli[inmem]
+langchain-huggingface
 
 # PDF processing and document handling
 pypdf
